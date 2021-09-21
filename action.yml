@@ -1,0 +1,16 @@
+name: 'github-action-node-template'
+description: 'GitHub Action template for JavaScript'
+
+inputs:
+  token:
+    description: 'GITHUB_TOKEN'
+    required: true
+    default: ${{ github.token }}
+
+runs:
+  using: 'node12'
+  main: 'dist/action.mjs'
+
+branding:
+  icon: 'zoom-in'
+  color: 'green'

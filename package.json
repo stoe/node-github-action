@@ -1,0 +1,47 @@
+{
+  "name": "node-github-action",
+  "version": "0.0.0-development",
+  "description": "GitHub Action template for JavaScript",
+  "keywords": [
+    "github-actions",
+    "automation"
+  ],
+  "author": {
+    "name": "Stefan Stölzle",
+    "email": "stoe@github.com",
+    "url": "https://github.com/stoe"
+  },
+  "license": "MIT",
+  "repository": "github:ActionsDesk/node-github-action",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
+  "exports": "src/index.js",
+  "scripts": {
+    "build": "npx @vercel/ncc build action.mjs --out dist --license licenses.txt --quiet --minify",
+    "format": "npx prettier --config-precedence prefer-file --write . && eslint . --fix",
+    "pretest": "npx eslint-config-prettier .eslintrc.json",
+    "test": "eslint .",
+    "prepare": "husky install ./.github/husky"
+  },
+  "dependencies": {
+    "@actions/core": "^1.5.0",
+    "@actions/github": "^5.0.0"
+  },
+  "devDependencies": {
+    "@github/prettier-config": "^0.0.4",
+    "@vercel/ncc": "^0.31.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-github": "^4.3.0",
+    "husky": "^7.0.2"
+  },
+  "prettier": "@github/prettier-config",
+  "husky": {
+    "hooks": {
+      "pre-commit": "./.github/husky/pre-commit",
+      "pre-push": "./.github/husky/pre-push"
+    }
+  }
+}
