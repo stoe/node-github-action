@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: '🛎 Checkout'
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v2.4.0
 
       - name: '🛠 Setup Node (npm)'
         uses: actions/setup-node@v2.4.1
