@@ -5,38 +5,10 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   publish:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: '🛎 Checkout'
-        uses: actions/checkout@v3
-
-      - name: '🛠 Setup Node (npm)'
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@stoe'
-
-      - name: '📦 Publish (npm)'
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: '🛠 Node (GitHub Packages)'
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@stoe'
-
-      - name: '📦 Publish (GitHub Packages)'
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: stoe/policies/.github/workflows/policy-node-publish.yml@main
