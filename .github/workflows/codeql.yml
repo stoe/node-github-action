@@ -8,35 +8,11 @@ on:
     branches:
       - main
 
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
 jobs:
-  codeql:
-    runs-on: ubuntu-latest
-
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
-    env:
-      CI: true
-      LGTM_INDEX_FILTERS: 'exclude:dist/*'
-
-    strategy:
-      matrix:
-        language:
-          - javascript
-
-    steps:
-      - name: '🛎 Checkout'
-        uses: actions/checkout@v3
-
-      - name: '🛠 Initialise'
-        uses: github/codeql-action/init@v2
-        with:
-          languages: ${{ matrix.language }}
-
-      - name: '📦 Build'
-        uses: github/codeql-action/autobuild@v2
-
-      - name: '🧪 Test'
-        uses: github/codeql-action/analyze@v2
+  publish:
+    uses: stoe/policies/.github/workflows/policy-node-codeql.yml@main

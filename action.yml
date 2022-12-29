@@ -8,8 +8,8 @@ inputs:
     default: ${{ github.token }}
 
 runs:
-  using: 'node12'
-  main: 'dist/action.mjs'
+  using: 'node16'
+  main: 'dist/index.js'
 
 branding:
   icon: 'zoom-in'
