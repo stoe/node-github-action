@@ -14,5 +14,5 @@ permissions:
   security-events: write
 
 jobs:
-  publish:
+  codeql:
     uses: stoe/policies/.github/workflows/policy-node-codeql.yml@main
